@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/CaviarDreams.ttf) format("truetype"); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/CaviarDreams.eot) format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/CaviarDreams_Italic.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/CaviarDreams_Italic.eot);
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/Caviar_Dreams_Bold.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/Caviar_Dreams_Bold.eot);
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/CaviarDreams_BoldItalic.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CaviarDreams"; /* имя шрифта для CSS правил */
+  src: url(../fonts/CaviarDreams_BoldItalic.eot);
+  font-weight: bold;
+  font-style: italic;
+}
