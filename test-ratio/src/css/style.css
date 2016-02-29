@@ -1,0 +1,277 @@
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: '';
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 34px;
+}
+.header {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 0 21px;
+  white-space: nowrap;
+}
+.header__slogan {
+  font-family: Playfair Display, serif;
+  font-size: 40px;
+  font-weight: 400;
+  display: inline-block;
+  margin: 0;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.header__line {
+  display: inline-block;
+  width: 60%;
+  height: 2px;
+  margin: 50px 0 0 10px;
+  background-color: #000;
+}
+.review {
+  width: 100%;
+}
+.review__photo {
+  position: relative;
+}
+.review__triangle {
+  position: absolute;
+  bottom: 4px;
+  width: 100%;
+}
+.review__triangle:after {
+  display: block;
+  width: 0;
+  margin: 0 auto;
+  content: '';
+  border: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+.review__description {
+  font-family: Noto Sans, sans-serif;
+  margin: 9px 0 15px;
+}
+.review__description-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+.review__description-author {
+  font-size: 13px;
+  color: #acacac;
+}
+.photo {
+  width: 100%;
+}
+.date {
+  font-family: Noto Serif, serif;
+  position: relative;
+  display: block;
+  text-align: center;
+  background-color: rgba(255,255,255,0.8);
+}
+.date_review {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 160px;
+  height: 105px;
+}
+.date__day {
+  font-size: 34px;
+  display: block;
+  margin: 15px 0 0;
+}
+.date__mon {
+  font-size: 18px;
+  display: block;
+  margin: -5px 0 0;
+}
+.date__triangle {
+  position: absolute;
+  top: 35px;
+  right: 17px;
+  border: 3px solid transparent;
+  border-left: 3px solid #000;
+}
+.content {
+  width: 100%;
+}
+.photo-list {
+  margin: -7.5px -10px;
+}
+.photo-list__item {
+  float: left;
+  box-sizing: border-box;
+  width: 25%;
+  height: 124px;
+  padding: 7.5px 10px;
+}
+.photo-list__item_teaser {
+  display: none;
+}
+.photo-list__item_banner {
+  float: right;
+  height: 248px;
+}
+.banner__img {
+  width: 100%;
+}
+.nav {
+  font-family: Noto Sans, sans-serif;
+  margin: 33px 0;
+}
+.nav__label {
+  font-size: 13px;
+  float: left;
+  margin: 0 23px 0 0;
+  color: #848484;
+}
+.nav__list {
+  float: left;
+}
+.nav__link {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 33px;
+  float: left;
+  width: 33px;
+  height: 33px;
+  margin: -7px 12px 0 0;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+.nav__link:hover {
+  text-decoration: underline;
+}
+.nav__link_active {
+  border-radius: 17px;
+  background-color: #e6e6e6;
+}
+.nav__link_next {
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 12px;
+}
+@media (max-width: 767px) {
+  .page {
+    width: 440px;
+    padding: 0 20px;
+  }
+  .photo {
+    width: 100%;
+  }
+  .date_review {
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: 53px;
+  }
+  .date__day {
+    font-size: 16px;
+    margin: 5px 0 0;
+  }
+  .date__mon {
+    font-size: 14px;
+    margin: 0;
+  }
+  .date__triangle {
+    display: none;
+  }
+  .review__triangle {
+    display: none;
+  }
+  .review__description {
+    display: none;
+  }
+  .photo-list {
+    margin: 0 -5px;
+  }
+  .photo-list__item {
+    overflow: hidden;
+    width: 20%;
+    height: 63px;
+    padding: 5px 5px;
+  }
+  .photo-list__item_banner {
+    width: 40%;
+    height: 252px;
+    padding: 5px 5px 5px 14px;
+  }
+  .photo-list__item_none {
+    display: none;
+  }
+  .photo-list__item_date .date__triangle {
+    top: 10px;
+    display: block;
+  }
+}
+@media (max-width: 479px) {
+  .page {
+    max-width: 310px;
+    padding: 0 5px;
+  }
+  .header {
+    margin: 0 0 14px;
+  }
+  .header__slogan {
+    font-size: 26px;
+  }
+  .header__line {
+    margin: 60px 0 0 10px;
+  }
+  .date_review {
+    top: 6px;
+    left: 6px;
+  }
+  .photo-list {
+    margin: 0 -2px;
+  }
+  .photo-list__item {
+    width: 25%;
+    height: 53px;
+    padding: 2px 2px;
+  }
+  .photo-list__item_banner {
+    display: none;
+  }
+  .photo-list__item_teaser {
+    display: block;
+    float: none;
+    width: 100%;
+    height: 95px;
+    padding: 6px 2px;
+  }
+  .teaser {
+    font-family: Noto Sans, sans-serif;
+  }
+  .teaser__img {
+    float: left;
+  }
+  .teaser__content {
+    float: left;
+    box-sizing: border-box;
+    width: 210px;
+    padding: 5px 0 5px 18px;
+  }
+  .teaser__title {
+    font-size: 10px;
+    font-weight: 600;
+    color: #bebebe;
+  }
+  .teaser__slogan {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .teaser__description {
+    font-size: 12px;
+  }
+}
