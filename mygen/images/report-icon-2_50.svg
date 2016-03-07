@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 27</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path id="path-1" d="M26,52 C40.3594035,52 52,40.3594035 52,26 C52,11.6405965 40.3594035,0 26,0 C11.6405965,0 0,11.6405965 0,26 C0,40.3594035 11.6405965,52 26,52 Z"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="My-Genetics" transform="translate(-231.000000, -4030.000000)">
+            <g id="Group-27" transform="translate(232.000000, 4031.000000)">
+                <g id="Rectangle-124">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" stroke="#2D96DD" stroke-width="2" fill="#2D96DD" xlink:href="#path-1"></use>
+                    <rect fill="#FFFFFF" mask="url(#mask-2)" x="26" y="-2" width="28" height="56"></rect>
+                </g>
+                <path d="M16,21.5655758 L16,19.0190271 C16,18.4565241 16.4450003,18 16.9933043,18 L18.9799129,18 C19.5282169,18 19.9732172,18.4565241 19.9732172,19.0190271 L19.9732172,32.2663793 C19.9732172,32.8283728 19.5282169,33.2854064 18.9799129,33.2854064 L16.9933043,33.2854064 C16.4450003,33.2854064 16,32.8283728 16,32.2663793 L16,29.7167735 L16,21.5655758 L16,21.5655758 Z" id="Stroke-1" stroke="#FFFFFF" stroke-width="1.00351999"></path>
+                <path d="M15.9799129,31.209298 L13.9933043,31.209298 C13.4450003,31.209298 13,30.7527739 13,30.1902709 L13,21.0190271 C13,20.4565241 13.4450003,20 13.9933043,20 L15.9799129,20" id="Stroke-3" stroke="#FFFFFF" stroke-width="1.00351999"></path>
+                <path d="M36.9732172,30.9906848 L36.9732172,32.2663793 C36.9732172,32.8288823 36.5282169,33.2854064 35.9799129,33.2854064 L33.9933043,33.2854064 C33.4450003,33.2854064 33,32.8288823 33,32.2663793 L33,19.0190271 C33,18.4570337 33.4450003,18 33.9933043,18 L35.9799129,18 C36.5282169,18 36.9732172,18.4570337 36.9732172,19.0190271 L36.9732172,21.5686329 L36.9732172,27.8655994 L36.9732172,30.9906848 Z" id="Stroke-5" stroke="#2D96DD" stroke-width="1.00351999"></path>
+                <path d="M37,20 L38.9866086,20 C39.5349126,20 39.9799129,20.4565241 39.9799129,21.0190271 L39.9799129,30.1902709 C39.9799129,30.7527739 39.5349126,31.209298 38.9866086,31.209298 L37,31.209298" id="Stroke-7" stroke="#2D96DD" stroke-width="1.00351999"></path>
+                <path d="M12.9866086,28.0570813 L11,28.0570813 L11,25 L12.9866086,25" id="Stroke-11" stroke="#FFFFFF" stroke-width="1.00351999"></path>
+                <path d="M40,25 L41.1125964,25 L41.1125964,28.0570813 L40,28.0570812" id="Stroke-12" stroke="#2D96DD" stroke-width="1.00351999"></path>
+                <rect id="Rectangle-120" stroke="#FFFFFF" x="20" y="24" width="6" height="1"></rect>
+                <rect id="Rectangle-120" stroke="#2D96DD" x="26" y="24" width="7" height="1"></rect>
+                <rect id="Rectangle-120" stroke="#FFFFFF" x="20" y="27" width="6" height="1"></rect>
+                <rect id="Rectangle-120" stroke="#2D96DD" x="26" y="27" width="7" height="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

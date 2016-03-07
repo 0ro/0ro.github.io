@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "ProxiNova"; /* имя шрифта для CSS правил */
+  src: url("../fonts/Proxima Nova/Proxima Nova Extra Condensed Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ProxiNova"; /* имя шрифта для CSS правил */
+  src: url("../fonts/Proxima Nova/Proxima Nova Extra Condensed Regular Italic.otf");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "ProxiNova"; /* имя шрифта для CSS правил */
+  src: url("../fonts/Proxima Nova/Proxima Nova Extra Condensed Light.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ProxiNova"; /* имя шрифта для CSS правил */
+  src: url("../fonts/Proxima Nova/Proxima Nova Extra Condensed Semibold.otf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ProxiNova"; /* имя шрифта для CSS правил */
+  src: url("../fonts/Proxima Nova/Proxima Nova Extra Condensed Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DINPro"; /* имя шрифта для CSS правил */
+  src: url("../fonts/DINPro/DINPro-Light.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DINPro"; /* имя шрифта для CSS правил */
+  src: url("../fonts/DINPro/DINPro-Bold.otf");
+  font-weight: 700;
+  font-style: normal;
+}
