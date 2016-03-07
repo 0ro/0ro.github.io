@@ -2,6 +2,12 @@ body {
   font-family: 'ProxiNova';
   font-weight: 300;
 }
+.clearfix:before,
+.clearfix:after {
+  display: table;
+
+  content: '';
+}
 .brand_name:before {
   display: none;
 
@@ -369,6 +375,7 @@ span.ru {
 
   border: 1px solid #a4a4a4;
   border-radius: 4px;
+  margin-bottom: 40px;;
 }
 .rate__title {
   font-size: 34px;
@@ -391,6 +398,7 @@ span.ru {
 .rate__descr {
   width: 188px;
   margin: 45px auto 0;
+  height: 120px;
 }
 .rate__icon {
   float: left;
