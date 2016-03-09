@@ -332,11 +332,10 @@ span.ru {
   font-family: 'DINPro';
   font-size: 14px;
 
-  float: left;
-
   width: 70%;
 
   text-align: left;
+  float: left;
 }
 .report__title {
   font-size: 14px;
@@ -347,12 +346,13 @@ span.ru {
   color: #000;
 }
 .report__icon {
-  float: left;
 
   width: 30%;
   margin: 0 0 66px;
 
   text-align: left;
+
+  float: left;
 }
 .report__slogan {
   font-size: 52px;
@@ -361,6 +361,7 @@ span.ru {
   margin-bottom: 85px;
 
   color: #2a97e0;
+  margin-top: 80px;
 }
 .well_rec {
   background: #fff;
@@ -417,13 +418,15 @@ span.ru {
 
   width: 158px;
   height: 48px;
-  margin: 74px 0 0;
+  margin: 74px auto 0;
 
   text-transform: uppercase;
 
   color: #fff;
   border-radius: 4px;
   background-color: #e51780;
+  display: block;
+  line-height: 48px;
 }
 .rates {
   margin-bottom: 120px;
@@ -462,4 +465,24 @@ img.logo-bottom {
   font-weight: 300;
   margin: 50px 0 0;
     
+}
+@media (max-width: 480px) {
+  .col-xs-12 {
+    width: 100%;
+    float: left;
+  }
+}
+.success {
+    background: #2595E0;
+    color: #fff;
+    margin: 10% auto 0;
+    min-width: 300px;
+    max-width: 30%;
+    padding: 30px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+.success__title {
+    font-size: 50px;
+    font-weight: 700;
 }

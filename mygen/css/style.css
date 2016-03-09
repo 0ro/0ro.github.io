@@ -1510,6 +1510,7 @@ cite {
   .banner_1, .banner_2 {
     padding: 60px 100px;
     height: 228px;
+    display: block;
   }
 }
 .banner_1 strong, .banner_2 strong {
@@ -1546,6 +1547,7 @@ cite {
     line-height: 54px;
     text-align: center;
     text-transform: none;
+    cursor: pointer;
   }
 }
 .banner_1 h4, .banner_2 h4 {

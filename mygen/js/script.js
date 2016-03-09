@@ -339,8 +339,14 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
                                 }
                         });
                 });
-                $('head').append('<link rel="stylesheet" href="'+prefix+'css/animation.css" />');
         }
+
+
+
+        $(document).on('click', 'a[href^=#]', function () {
+            $('html, body').animate({ scrollTop:  ($('[name="'+this.hash.slice(1)+'"]').offset().top - 125)}, 1000 ); 
+            return false;
+        });
 })(jQuery);
 
 
