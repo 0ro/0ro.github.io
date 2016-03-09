@@ -1505,6 +1505,7 @@ cite {
   text-transform: uppercase;
   width: 100%;
   padding: 35px 20px;
+  display: block;
 }
 @media (min-width: 768px) {
   .banner_1, .banner_2 {
