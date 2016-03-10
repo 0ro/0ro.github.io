@@ -29,10 +29,11 @@ body {
   width: 100%;
 }
 .camera_container {
-  padding-bottom: 82.9%;
 
   background: url(../images/doctors.png) no-repeat;
   background-size: contain;
+
+  padding-bottom: 85.9%;
 }
 @media (max-width: 991px) {
   .camera_wrapper {
@@ -43,6 +44,11 @@ body {
   .camera_wrapper .camera_container {
     background-size: contain;
   }
+}
+@media (max-width: 479px) {
+   .camera_container {
+
+   }
 }
 .isStuck {
   padding: 15px 0;
@@ -85,7 +91,7 @@ body {
   background-color: #fff;
   background-image: url(../images/video-wrap-all.png);
   background-repeat: no-repeat;
-  background-position: center -75px;
+  background-position: center bottom;
   background-size: contain;
 }
 // .video__descr {
@@ -132,7 +138,7 @@ body {
   .video__wrap {
     height: 364px;
 
-    background-position: center -42px;
+    background-position: center bottom;
   }
   .video__descr {
     top: 2.5%;
@@ -143,11 +149,16 @@ body {
     left: 27%;
   }
 }
+@media (max-width: 991px) {
+  .camera_container {
+    margin: 54px 0 0;
+  }
+}
 @media (max-width: 479px) {
   .video__wrap {
-    height: 240px;
+    height: 175px;
 
-    background-position: center 2px;
+    background-position: center bottom;
   }
   .video__descr {
     top: 2.5%;
@@ -245,11 +256,12 @@ body {
   line-height: 24px;
 
   padding-top: 25px;
+  padding-bottom: 80px;
 }
 .recomendation__icon {
   width: 107px;
   height: 100px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 .recomendation__icon-1 {
   background-image: url(../images/rec-icon-eat.svg);
@@ -293,6 +305,22 @@ span.ru {
 
   background-color: #a92d80;
 }
+@media (max-width: 991px) {
+  .vertical-line {
+    display: none;
+  }
+  .diets {
+    border: 0;
+    padding: 0 20px 0;
+  }
+  .diet {
+  margin: 0 0 70px;
+
+  }
+  .well_5 {
+    padding: 0;
+  }
+}
 .question__slogan {
   font-size: 50px;
   line-height: 52px;
@@ -303,6 +331,7 @@ span.ru {
 }
 .question__content {
   text-align: left;
+  margin-bottom: 60px;
 }
 .question__title {
   font-size: 30px;
@@ -316,7 +345,7 @@ span.ru {
   font-size: 22px;
   line-height: 24px;
 
-  margin: 30px 0 0;
+  margin: 30px 0;
 
   color: #565656;
 }
@@ -324,6 +353,11 @@ span.ru {
   padding: 0 0 80px;
 
   border-bottom: 2px solid #a92d80;
+}
+@media (max-width: 479px) {
+  .question {
+    padding: 0;
+  }
 }
 .report__img {
   width: 66px;
@@ -365,9 +399,9 @@ span.ru {
 }
 .well_rec {
   background: #fff;
+  box-shadow: 0 -10px 8px 0 rgba(0,0,0,0.1);;
 }
 .recomendation {
-  padding: 0 0 50px;
 
   background: #fff;
 }

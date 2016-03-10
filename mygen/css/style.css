@@ -185,9 +185,8 @@ h6 + .index-list {
 .parallax {
   position: relative;
   overflow: hidden;
-  z-index: 0;
   padding-bottom: 0;
-  margin-top: -300px;
+  margin-top: -347px;
 }
 @media (min-width: 992px) {
   .parallax {
@@ -213,11 +212,11 @@ h6 + .index-list {
   }
 }
 .parallax:before {
-  height: 64%;
-  top: -1px;
+  height: 65%;
+  top: 29px;
   -webkit-transform: translateY(-54%);
       -ms-transform: translateY(-54%);
-          transform: translateY(-54%);
+          transform: translateY(-42%);
 }
 .parallax:after {
   top: 100%;
@@ -943,7 +942,7 @@ main {
 }
 
 .header-pic {
-  margin-top: 63px;
+  margin-top: 160px;
 }
 .header-pic img {
   position: relative;
@@ -955,7 +954,7 @@ main {
 }
 
 .main_offset {
-  padding-top: 15.8%;
+  padding-top: 2.8%;
 }
 @media (min-width: 2500px) {
   .main_offset {
@@ -1193,7 +1192,7 @@ h2 + .subheading {
 }
 
 .heading_offset {
-  padding-top: 68px;
+  padding-top: 50px;
 }
 .heading_offset-1 {
   padding-top: 20px;
@@ -1634,7 +1633,6 @@ address * + dl {
   padding: 0 0 280px;
 }
 .well_4 {
-  padding: 0 0 64px;
 }
 .well_5 {
   padding: 0 0 124px;
@@ -1904,7 +1902,7 @@ footer .envelope:before {
 }
 @media (max-width: 991px) {
   .main_offset {
-    padding-top: 50px;
+    padding-top: 0;
   }
 
   header .main_header_figure {
