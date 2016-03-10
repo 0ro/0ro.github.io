@@ -29,6 +29,12 @@
   font-style: normal;
 }
 @font-face {
+  font-family: "ProxiNova"; /* имя шрифта для CSS правил */
+  src: url("../fonts/Proxima Nova/Proxima Nova Light.otf");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
   font-family: "DINPro"; /* имя шрифта для CSS правил */
   src: url("../fonts/DINPro/DINPro-Light.otf");
   font-weight: 300;

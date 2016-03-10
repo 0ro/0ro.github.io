@@ -116,8 +116,9 @@ strong {
 }
 
 .page {
-  overflow: hidden;
   min-height: 500px;
+  height: 100%;
+  padding: 0.1px;;
 }
 .lt-ie9 .page {
   min-width: 1200px;
