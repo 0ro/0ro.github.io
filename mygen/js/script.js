@@ -1,5 +1,4 @@
-$(document).ready(function() {
-    function include(scriptUrl) {
+function include(scriptUrl) {
     document.write('<script src="' + scriptUrl + '"></script>');
 }
 
@@ -350,8 +349,6 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
             return false;
         });
 })(jQuery);
-});
-
 
 
 
