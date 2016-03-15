@@ -1,4 +1,5 @@
-function include(scriptUrl) {
+$(document).ready(function() {
+    function include(scriptUrl) {
     document.write('<script src="' + scriptUrl + '"></script>');
 }
 
@@ -257,6 +258,7 @@ $(function () {
         }
     }
 });
+
 var ua = navigator.userAgent.toLocaleLowerCase(),
     regV = /ipod|ipad|iphone/gi,
     result = ua.match(regV),
@@ -348,6 +350,8 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
             return false;
         });
 })(jQuery);
+});
+
 
 
 
