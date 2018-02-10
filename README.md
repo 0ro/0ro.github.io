@@ -1,6 +1,6 @@
 #Портфолио Дениса Богданова
-- [Дизайн Студия К.Чемеловой](http://db1990.github.io/design-studio)
-- [IEC telecom](http://db1990.github.io/ie-telecom)
-- [Магазин деталей для технического обслуживания](http://db1990.github.io/test-task/)
-- [Тестовое задание для printio.ru](http://db1990.github.io/test-sketch/build/pages/index.html)
-- [Тестовое задание для ratio](http://db1990.github.io/test-ratio/build/pages/index.html)
+- [Дизайн Студия К.Чемеловой](http://doooob.github.io/design-studio)
+- [IEC telecom](http://doooob.github.io/ie-telecom)
+- [Магазин деталей для технического обслуживания](http://doooob.github.io/test-task/)
+- [Тестовое задание для printio.ru](http://doooob.github.io/test-sketch/build/pages/index.html)
+- [Тестовое задание для ratio](http://doooob.github.io/test-ratio/build/pages/index.html)
