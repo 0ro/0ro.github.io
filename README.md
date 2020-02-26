@@ -1,4 +1,4 @@
-#Портфолио Дениса Богданова
+# Портфолио
 - [Дизайн Студия К.Чемеловой](http://0ro.github.io/design-studio)
 - [IEC telecom](http://0ro.github.io/ie-telecom)
 - [Магазин деталей для технического обслуживания](http://0ro.github.io/test-task/)
