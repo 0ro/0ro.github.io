@@ -27,6 +27,18 @@ export const SOCIALS: SocialObjects = [
     active: true,
   },
   {
+    name: "LeetCode",
+    href: "https://leetcode.com/0ro/",
+    linkTitle: `${SITE.title} on LeetCode`,
+    active: true,
+  },
+  {
+    name: "StackOverflow",
+    href: "https://stackoverflow.com/users/13410760/oro",
+    linkTitle: `${SITE.title} on StackOverflow`,
+    active: true,
+  },
+  {
     name: "Github",
     href: "https://github.com/0ro",
     linkTitle: ` ${SITE.title} on Github`,
