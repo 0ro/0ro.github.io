@@ -3,12 +3,11 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+Greetings, I am Raman Nikitsenka, an experienced full-stack developer with over 10 years of dedicated involvement in web development. My proficiency spans a range of essential technologies, including HTML, CSS, JavaScript, TypeScript, React, and Nest.js.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+My professional journey has been marked by consistent success as a front-end developer and tech lead. I possess a robust ability to adapt to emerging challenges, and my commitment to teamwork is underscored by a strong dedication to mentoring junior colleagues.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+I actively contribute to the Stack Overflow community, where I engage in collaborative problem-solving, and I derive great satisfaction from honing my skills through LeetCode challenges. Additionally, I occasionally venture into tech writing, sharing my knowledge to enrich the wider community.
 
 <div>
   <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
@@ -16,21 +15,6 @@ This theme is self-documented \_ which means articles/posts in this theme can al
 
 ## Tech Stack
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
-
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+- **Languages**: JavaScript, TypeScript, HTML, CSS
+- **Front-end**: React, SCSS, react-query, fabric.js, react-router, antd, zustand, mobx, redux, redux-saga, redux-toolkit
+- **Back-end**: Nest.js, PostgreSQL, MySQL, Redis, AWS, Google Cloud Platform

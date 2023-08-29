@@ -5,6 +5,7 @@ import LinkButton from "./LinkButton.astro";
 
 import logoPNG from "/assets/logo.png";
 import logoSVG from "/assets/logo.svg";
+import profile from "../assets/new-profile.jpg";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
@@ -18,18 +19,8 @@ const { activeNav } = Astro.props;
   <div class="nav-container">
     <div class="top-nav-wrap">
       <a href="/" class="logo">
-        {
-          LOGO_IMAGE.enable ? (
-            <img
-              src={LOGO_IMAGE.svg ? logoSVG : logoPNG}
-              alt="AstroPaper Logo"
-              width={LOGO_IMAGE.width}
-              height={LOGO_IMAGE.height}
-            />
-          ) : (
-            SITE.title
-          )
-        }
+        <img src={profile} alt="Raman Nikitsenka" class="profile"/>
+        { SITE.title }
       </a>
       <nav id="nav-menu">
         <button
@@ -129,7 +120,10 @@ const { activeNav } = Astro.props;
     @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
   }
   .logo {
-    @apply absolute py-1 text-xl font-semibold sm:static sm:text-2xl;
+    @apply absolute flex items-center w-full gap-2 flex-grow py-1 text-xl font-semibold whitespace-nowrap sm:static sm:text-2xl;
+  }
+  .profile {
+    @apply w-8 h-8 rounded-full mr-2;
   }
   .hamburger-menu {
     @apply self-end p-2 sm:hidden;
