@@ -9,7 +9,7 @@ tags:
   - typescript
   - react
 ogImage: ""
-description: "TypeScript's **infer** keyword is your secret weapon for effortlessly deducing types, simplifying code, and unlocking the full potential of type inference. In this article, we'll explore how infer can make your TypeScript development smoother and more efficient."
+description: "TypeScript's infer keyword is your secret weapon for effortlessly deducing types, simplifying code, and unlocking the full potential of type inference. In this article, we'll explore how infer can make your TypeScript development smoother and more efficient."
 ---
 
 TypeScript's **infer** keyword is your secret weapon for effortlessly deducing types, simplifying code, and unlocking the full potential of type inference. In this article, we'll explore how infer can make your TypeScript development smoother and more efficient. 🚀
