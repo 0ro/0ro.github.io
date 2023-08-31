@@ -51,6 +51,6 @@ To make adoption for you easier, I'm happy to share [my keybinding configuration
 
 To summarise, here's all you need to do, to bring VIM in your coding life now:
 
-1.      Complete vimtutor.
-2.      Install the Vim extension in VSCode.
-3.      Edit your keybindings.json file (navigate to keyboard shortcuts in Settings, then switch to the JSON version).
+1.        Complete vimtutor.
+2.        Install the Vim extension in VSCode.
+3.        Edit your keybindings.json file (navigate to keyboard shortcuts in Settings, then switch to the JSON version).

@@ -21,6 +21,10 @@ let themeValue = getPreferTheme();
 function setPreference() {
   localStorage.setItem("theme", themeValue);
   reflectPreference();
+  document
+    .querySelector("#theme-btn")
+    ?.removeEventListener("click", toggleTheme);
+  document.querySelector("#theme-btn")?.addEventListener("click", toggleTheme);
 }
 
 function reflectPreference() {
@@ -37,10 +41,12 @@ window.onload = () => {
   reflectPreference();
 
   // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
-    themeValue = themeValue === "light" ? "dark" : "light";
-    setPreference();
-  });
+  document.querySelector("#theme-btn")?.addEventListener("click", toggleTheme);
+};
+
+const toggleTheme = () => {
+  themeValue = themeValue === "light" ? "dark" : "light";
+  setPreference();
 };
 
 // sync with system changes
@@ -50,3 +56,5 @@ window
     themeValue = isDark ? "dark" : "light";
     setPreference();
   });
+
+document.addEventListener("astro:after-swap", setPreference);
