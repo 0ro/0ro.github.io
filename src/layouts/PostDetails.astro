@@ -6,6 +6,7 @@ import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
+import { stripEmojis } from "@utils/generateOgImage";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -17,7 +18,7 @@ const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } =
 
 const { Content } = await post.render();
 
-const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
+const ogUrl = new URL(ogImage ? ogImage : `${stripEmojis(title)}.png`, Astro.url.origin)
   .href;
 ---
 

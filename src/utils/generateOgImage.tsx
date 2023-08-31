@@ -1,4 +1,4 @@
-import satori, { SatoriOptions } from "satori";
+import satori, { type SatoriOptions } from "satori";
 import { SITE } from "@config";
 import { writeFile } from "node:fs/promises";
 import { Resvg } from "@resvg/resvg-js";
@@ -134,6 +134,16 @@ const options: SatoriOptions = {
     },
   ],
 };
+
+export const stripEmojis = (str: string) =>
+  str
+    .replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ""
+    )
+    .replace(/\s+/g, " ")
+    .replace(/\?/g, "")
+    .trim();
 
 const generateOgImage = async (mytext = SITE.title) => {
   const svg = await satori(ogImage(mytext), options);
