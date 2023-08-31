@@ -24,13 +24,17 @@ function setPreference() {
   document
     .querySelector("#theme-btn")
     ?.removeEventListener("click", toggleTheme);
-  document.querySelector("#theme-btn")?.addEventListener("click", toggleTheme);
+  document
+    .querySelector("#theme-btn")
+    ?.addEventListener("click", toggleTheme);
 }
 
 function reflectPreference() {
   document.firstElementChild.setAttribute("data-theme", themeValue);
 
-  document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
+  document
+    .querySelector("#theme-btn")
+    ?.setAttribute("aria-label", themeValue);
 }
 
 // set early so no page flashes / CSS is made aware
@@ -41,7 +45,9 @@ window.onload = () => {
   reflectPreference();
 
   // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn")?.addEventListener("click", toggleTheme);
+  document
+    .querySelector("#theme-btn")
+    ?.addEventListener("click", toggleTheme);
 };
 
 const toggleTheme = () => {

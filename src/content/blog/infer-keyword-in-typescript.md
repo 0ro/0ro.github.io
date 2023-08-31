@@ -74,12 +74,17 @@ type T4 = Awaited<typeof promise>; // number[]
 Let's go further. The gaining access to function arguments can be defined like this:
 
 ```ts
-type GetTypeOfFirstArgument<T> = T extends (arg: infer U, ...args) => any
+type GetTypeOfFirstArgument<T> = T extends (
+  arg: infer U,
+  ...args
+) => any
   ? U
   : never;
 
 type T1 = GetTypeOfFirstArgument<typeof document.getElementById>; // string
-type T2 = GetTypeOfFirstArgument<(arg1: string, arg2: number) => void>; // string
+type T2 = GetTypeOfFirstArgument<
+  (arg1: string, arg2: number) => void
+>; // string
 ```
 
 And in the end, maybe the most practical example with React component function.
@@ -87,7 +92,9 @@ And in the end, maybe the most practical example with React component function.
 It can happen that in some libraries, they didn't export the props for their component. But in your code, you really need it. So with **infer** keyword getting the prop type is possible, and will look like this:
 
 ```ts
-const OutsideComponent: React.FC<{ name: string }> = () => null;
+const OutsideComponent: React.FC<{
+  name: string;
+}> = () => null;
 
 type InferProps<T> = T extends React.FC<infer P> ? P : never;
 
