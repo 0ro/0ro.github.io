@@ -1,5 +1,5 @@
 ---
-import {  SITE } from "@config";
+import { SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 
@@ -15,8 +15,8 @@ const { activeNav } = Astro.props;
   <div class="nav-container">
     <div class="top-nav-wrap">
       <a href="/" class="logo">
-        <img src="/assets/profile.jpg" alt="Raman Nikitsenka" class="profile"/>
-        { SITE.title }
+        <img src="/assets/profile.jpg" alt="Raman Nikitsenka" class="profile" />
+        {SITE.title}
       </a>
       <nav id="nav-menu">
         <button
@@ -183,20 +183,27 @@ const { activeNav } = Astro.props;
 </style>
 
 <script>
-  // Toggle menu
-  const menuBtn = document.querySelector(".hamburger-menu");
-  const menuIcon = document.querySelector(".menu-icon");
-  const menuItems = document.querySelector("#menu-items") as HTMLElement;
+  const handleHumberger = () => {
+    // Toggle menu
+    const menuBtn = document.querySelector(".hamburger-menu");
+    const menuIcon = document.querySelector(".menu-icon");
+    const menuItems = document.querySelector("#menu-items") as HTMLElement;
 
-  menuBtn?.addEventListener("click", () => {
-    menuItems.style.display = menuItems.style.display === "grid" ? "none" : "grid";
-    const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-    menuIcon?.classList.toggle("is-active");
-    menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
-    menuBtn.setAttribute(
-      "aria-label",
-      menuExpanded ? "Open Menu" : "Close Menu"
-    );
-    menuItems?.classList.toggle("display-none");
-  });
+    menuBtn?.addEventListener("click", () => {
+      menuItems.style.display =
+        menuItems.style.display === "grid" ? "none" : "grid";
+      const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+      menuIcon?.classList.toggle("is-active");
+      menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
+      menuBtn.setAttribute(
+        "aria-label",
+        menuExpanded ? "Open Menu" : "Close Menu"
+      );
+      menuItems?.classList.toggle("display-none");
+    });
+  };
+
+  handleHumberger();
+
+  document.addEventListener("astro:after-swap", handleHumberger);
 </script>
