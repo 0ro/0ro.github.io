@@ -22,9 +22,9 @@ interface SearchResult {
 export default function SearchBar({ searchList }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputVal, setInputVal] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
-    null
-  );
+  const [searchResults, setSearchResults] = useState<
+    SearchResult[] | null
+  >(null);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInputVal(e.currentTarget.value);
@@ -50,20 +50,23 @@ export default function SearchBar({ searchList }: Props) {
 
     // put focus cursor at the end of the string
     setTimeout(function () {
-      inputRef.current!.selectionStart = inputRef.current!.selectionEnd =
-        searchStr?.length || 0;
+      inputRef.current!.selectionStart =
+        inputRef.current!.selectionEnd = searchStr?.length || 0;
     }, 50);
   }, []);
 
   useEffect(() => {
     // Add search result only if
     // input value is more than one character
-    let inputResult = inputVal.length > 0 ? fuse.search(inputVal) : [];
+    let inputResult =
+      inputVal.length > 0 ? fuse.search(inputVal) : [];
     setSearchResults(inputResult);
 
     // Update search string in URL
     if (inputVal.length > 0) {
-      const searchParams = new URLSearchParams(window.location.search);
+      const searchParams = new URLSearchParams(
+        window.location.search
+      );
       searchParams.set("q", inputVal);
       const newRelativePathQuery =
         window.location.pathname + "?" + searchParams.toString();

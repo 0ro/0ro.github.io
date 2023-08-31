@@ -74,9 +74,14 @@ interface ITextProps {
   children?: React.ReactNode;
 }
 
-export const Text: React.FC<ITextProps> = ({ type = "primary", children }) => {
+export const Text: React.FC<ITextProps> = ({
+  type = "primary",
+  children,
+}) => {
   return (
-    <p className={classNames(styles.root, styles[`${type}Type`])}>{children}</p>
+    <p className={classNames(styles.root, styles[`${type}Type`])}>
+      {children}
+    </p>
   );
 };
 ```
