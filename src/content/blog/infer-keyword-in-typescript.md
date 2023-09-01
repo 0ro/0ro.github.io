@@ -3,7 +3,7 @@ author: Raman Nikitsenka
 pubDatetime: 2023-08-22T22:13:56Z
 title: "📜 Infer keyword in TypeScript"
 postSlug: infer-keyword-in-typescript
-featured: true
+featured: false
 draft: false
 tags:
   - typescript
