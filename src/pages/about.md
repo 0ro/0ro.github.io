@@ -3,7 +3,7 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-Greetings, I am Raman Nikitsenka, an experienced full-stack developer with over 10 years of dedicated involvement in web development. My proficiency spans a range of essential technologies, including HTML, CSS, JavaScript, TypeScript, React, and Nest.js.
+Greetings, I am Raman Nikitsenka, an experienced Software Engineer and Tech Lead with over 10 years of dedicated involvement in web development. My proficiency spans a range of essential technologies, including HTML, CSS, JavaScript, TypeScript, React, and Nest.js.
 
 My professional journey has been marked by consistent success as a front-end developer and tech lead. I possess a robust ability to adapt to emerging challenges, and my commitment to teamwork is underscored by a strong dedication to mentoring junior colleagues.
 
