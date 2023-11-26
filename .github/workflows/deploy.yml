@@ -4,7 +4,7 @@ on:
   # Trigger the workflow every time you push to the `github-pages-example ` branch
   # Using a different branch name? Replace `github-pages-example ` with your branch’s name
   push:
-    branches: [deployment]
+    branches: [main]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 

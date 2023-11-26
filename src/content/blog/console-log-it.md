@@ -19,7 +19,7 @@ Let's assume that this bug has already been prioritized for you, and you don't n
 
 And remember _Catching A Pokémon Is Not About Skill._
 
-![Detective Pikachu](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2je5bhustbi9tctn3c2.png)
+![Detective Pikachu](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ijm4uh58h8y113hvtesm.png)
 
 ## Visual Detection
 
