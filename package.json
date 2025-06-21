@@ -1,6 +1,7 @@
 {
   "name": "0ro",
   "version": "2.3.0",
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "dev": "astro check --watch & astro dev",
     "start": "astro dev",
