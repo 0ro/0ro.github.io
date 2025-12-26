@@ -70,29 +70,15 @@ export function Admin() {
 
   const handleExport = () => {
     const data = exportData();
-    setExportText(data);
-    setShowExport(true);
-    setCopySuccess(false);
-  };
-
-  const handleCopyExport = async () => {
-    try {
-      await navigator.clipboard.writeText(exportText);
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
-    } catch {
-      // Fallback for browsers that don't support clipboard API
-      const textarea = document.createElement("textarea");
-      textarea.value = exportText;
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textarea);
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
-    }
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `polish-flashcards-${
+      new Date().toISOString().split("T")[0]
+    }.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   const handleImport = () => {
@@ -177,46 +163,6 @@ export function Admin() {
           📥 Import
         </button>
       </div>
-
-      {showExport && (
-        <div
-          className="export-modal-overlay"
-          onClick={() => setShowExport(false)}
-        >
-          <div
-            className="export-modal"
-            onClick={e => e.stopPropagation()}
-          >
-            <div className="modal-header">
-              <h3>Export Data</h3>
-              <button
-                className="modal-close"
-                onClick={() => setShowExport(false)}
-              >
-                ✕
-              </button>
-            </div>
-            <p className="modal-hint">
-              Copy the JSON below and save it to a file:
-            </p>
-            <textarea
-              className="export-textarea"
-              value={exportText}
-              readOnly
-              rows={8}
-              onClick={e =>
-                (e.target as HTMLTextAreaElement).select()
-              }
-            />
-            <button
-              className={`submit-btn ${copySuccess ? "success" : ""}`}
-              onClick={handleCopyExport}
-            >
-              {copySuccess ? "✓ Copied!" : "📋 Copy to Clipboard"}
-            </button>
-          </div>
-        </div>
-      )}
 
       {showImport && (
         <div className="import-section">

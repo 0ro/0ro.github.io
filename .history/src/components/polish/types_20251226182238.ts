@@ -1,9 +1,5 @@
 // Mastery level type
-export type MasteryLevel =
-  | "new"
-  | "learning"
-  | "reviewing"
-  | "mastered";
+export type MasteryLevel = "new" | "learning" | "reviewing" | "mastered";
 
 // Status change event
 export interface StatusChange {

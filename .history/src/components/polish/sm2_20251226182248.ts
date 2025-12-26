@@ -184,29 +184,3 @@ export function getMasteryStats(cards: Flashcard[]): {
 export function thumbsToQuality(isCorrect: boolean): Quality {
   return isCorrect ? 4 : 1;
 }
-
-/**
- * Get mastery level from repetitions count
- */
-export function getMasteryLevel(repetitions: number): MasteryLevel {
-  if (repetitions === 0) return "new";
-  if (repetitions <= 2) return "learning";
-  if (repetitions <= 5) return "reviewing";
-  return "mastered";
-}
-
-/**
- * Get human-readable mastery level label
- */
-export function getMasteryLabel(level: MasteryLevel): string {
-  switch (level) {
-    case "new":
-      return "New";
-    case "learning":
-      return "Learning";
-    case "reviewing":
-      return "Reviewing";
-    case "mastered":
-      return "Mastered";
-  }
-}

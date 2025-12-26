@@ -1,5 +1,6 @@
 import { useStore } from "./store";
-import { getMasteryStats, getDueCards } from "./sm2";
+import { getMasteryStats, getDueCards, getMasteryLabel } from "./sm2";
+import type { StatusChange, MasteryLevel } from "./types";
 
 export function Stats() {
   const { flashcards, setView } = useStore();
@@ -32,18 +33,40 @@ export function Stats() {
     .sort((a, b) => a.repetitions - b.repetitions)
     .slice(0, 5);
 
-  const getMasteryColor = (level: string) => {
-    switch (level) {
-      case "newCards":
-        return "#6366f1";
-      case "learning":
-        return "#f59e0b";
-      case "reviewing":
-        return "#10b981";
-      case "mastered":
-        return "#22c55e";
-      default:
-        return "#94a3b8";
+  // Get all status changes with word info, sorted by most recent
+  interface StatusChangeWithWord extends StatusChange {
+    wordId: string;
+    polish: string;
+  }
+
+  const allStatusChanges: StatusChangeWithWord[] = flashcards
+    .flatMap(card =>
+      (card.statusHistory || []).map(change => ({
+        ...change,
+        wordId: card.id,
+        polish: card.polish,
+      }))
+    )
+    .sort((a, b) => b.timestamp - a.timestamp)
+    .slice(0, 20);
+
+  const formatDate = (timestamp: number) => {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffMs = now.getTime() - timestamp;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) {
+      return date.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    } else if (diffDays === 1) {
+      return "Yesterday";
+    } else if (diffDays < 7) {
+      return `${diffDays} days ago`;
+    } else {
+      return date.toLocaleDateString();
     }
   };
 
@@ -194,6 +217,34 @@ export function Stats() {
                 <span className="mini-reps">
                   {word.repetitions} reviews
                 </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {allStatusChanges.length > 0 && (
+        <div className="history-section">
+          <h2 className="section-title">Progress History</h2>
+          <div className="history-list">
+            {allStatusChanges.map((change, index) => (
+              <div
+                key={`${change.wordId}-${change.timestamp}-${index}`}
+                className="history-item"
+              >
+                <span className="history-date">
+                  {formatDate(change.timestamp)}
+                </span>
+                <span className="history-word">{change.polish}</span>
+                <div className="history-change">
+                  <span className={`level-badge ${change.fromLevel}`}>
+                    {getMasteryLabel(change.fromLevel)}
+                  </span>
+                  <span className="history-arrow">→</span>
+                  <span className={`level-badge ${change.toLevel}`}>
+                    {getMasteryLabel(change.toLevel)}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

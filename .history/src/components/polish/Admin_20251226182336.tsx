@@ -179,14 +179,8 @@ export function Admin() {
       </div>
 
       {showExport && (
-        <div
-          className="export-modal-overlay"
-          onClick={() => setShowExport(false)}
-        >
-          <div
-            className="export-modal"
-            onClick={e => e.stopPropagation()}
-          >
+        <div className="export-modal-overlay" onClick={() => setShowExport(false)}>
+          <div className="export-modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Export Data</h3>
               <button
@@ -204,9 +198,7 @@ export function Admin() {
               value={exportText}
               readOnly
               rows={8}
-              onClick={e =>
-                (e.target as HTMLTextAreaElement).select()
-              }
+              onClick={e => (e.target as HTMLTextAreaElement).select()}
             />
             <button
               className={`submit-btn ${copySuccess ? "success" : ""}`}

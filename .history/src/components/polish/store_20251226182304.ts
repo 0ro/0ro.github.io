@@ -134,25 +134,10 @@ export const useStore = create(
           );
 
           if (cardIndex !== -1) {
-            const oldCard = state.flashcards[cardIndex];
-            const oldLevel = getMasteryLevel(oldCard.repetitions);
-            const newLevel = getMasteryLevel(sm2Result.repetitions);
-
-            // Track status change if level changed
-            const statusHistory = oldCard.statusHistory || [];
-            if (oldLevel !== newLevel) {
-              statusHistory.push({
-                timestamp: Date.now(),
-                fromLevel: oldLevel,
-                toLevel: newLevel,
-              });
-            }
-
             state.flashcards[cardIndex] = {
-              ...oldCard,
+              ...state.flashcards[cardIndex],
               ...sm2Result,
               lastReviewDate: Date.now(),
-              statusHistory,
             };
           }
 

@@ -178,46 +178,6 @@ export function Admin() {
         </button>
       </div>
 
-      {showExport && (
-        <div
-          className="export-modal-overlay"
-          onClick={() => setShowExport(false)}
-        >
-          <div
-            className="export-modal"
-            onClick={e => e.stopPropagation()}
-          >
-            <div className="modal-header">
-              <h3>Export Data</h3>
-              <button
-                className="modal-close"
-                onClick={() => setShowExport(false)}
-              >
-                ✕
-              </button>
-            </div>
-            <p className="modal-hint">
-              Copy the JSON below and save it to a file:
-            </p>
-            <textarea
-              className="export-textarea"
-              value={exportText}
-              readOnly
-              rows={8}
-              onClick={e =>
-                (e.target as HTMLTextAreaElement).select()
-              }
-            />
-            <button
-              className={`submit-btn ${copySuccess ? "success" : ""}`}
-              onClick={handleCopyExport}
-            >
-              {copySuccess ? "✓ Copied!" : "📋 Copy to Clipboard"}
-            </button>
-          </div>
-        </div>
-      )}
-
       {showImport && (
         <div className="import-section">
           <textarea
