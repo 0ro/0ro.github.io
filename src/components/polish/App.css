@@ -1,17 +1,7 @@
-/* Polish Flashcard App - Monochrome Minimal Theme */
+/* Polish Flashcard App - Theme Variables */
 
+/* Shared design tokens */
 :root {
-  /* Grayscale palette */
-  --bg-primary: #fafafa;
-  --bg-secondary: #f5f5f5;
-  --bg-card: #ffffff;
-  --bg-hover: #f0f0f0;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
-  --text-muted: #999999;
-  --border-color: #e0e0e0;
-  --border-active: #333333;
-  
   /* Spacing scale */
   --space-1: 4px;
   --space-2: 8px;
@@ -33,6 +23,55 @@
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 200ms ease;
+}
+
+/* Light mode (default) */
+.polish-app,
+.polish-app[data-theme="light"] {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-hover: #f0f0f0;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #e0e0e0;
+  --border-active: #333333;
+  --accent: #006cac;
+  
+  /* Mastery level colors - light mode */
+  --mastery-new-bg: #f5f5f5;
+  --mastery-new-text: #999999;
+  --mastery-learning-bg: #e0e0e0;
+  --mastery-learning-text: #666666;
+  --mastery-reviewing-bg: #d0d0d0;
+  --mastery-reviewing-text: #444444;
+  --mastery-mastered-bg: #1a1a1a;
+  --mastery-mastered-text: #fafafa;
+}
+
+/* Dark mode */
+.polish-app[data-theme="dark"] {
+  --bg-primary: rgb(33, 39, 55);
+  --bg-secondary: #1e293b;
+  --bg-card: #34405f;
+  --bg-hover: #3d4a6a;
+  --text-primary: #eaedf3;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --border-color: #2d3a52;
+  --border-active: #ff6b01;
+  --accent: #ff6b01;
+  
+  /* Mastery level colors - dark mode */
+  --mastery-new-bg: #2d3a52;
+  --mastery-new-text: #6b7280;
+  --mastery-learning-bg: #3d4a6a;
+  --mastery-learning-text: #9ca3af;
+  --mastery-reviewing-bg: #4a5a7a;
+  --mastery-reviewing-text: #c0c8d4;
+  --mastery-mastered-bg: #ff6b01;
+  --mastery-mastered-text: #ffffff;
 }
 
 /* Base Styles */
@@ -190,33 +229,40 @@ h1, h2 {
 }
 
 .action-btn.primary {
-  background: var(--text-primary);
+  background: var(--accent);
   border: none;
-  color: var(--bg-primary);
-  font-weight: 500;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .action-btn.primary:hover:not(:disabled) {
-  background: #333333;
+  filter: brightness(1.1);
 }
 
 .action-btn.primary:active:not(:disabled) {
-  background: #000000;
+  filter: brightness(0.95);
 }
 
 .action-btn.primary:disabled {
-  opacity: 0.4;
+  opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+.action-btn.primary .btn-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
 
 .action-btn.secondary {
   background: var(--bg-card);
   color: var(--text-primary);
+  border: 1px solid var(--border-color);
 }
 
 .action-btn.secondary:hover {
   background: var(--bg-hover);
-  border-color: var(--text-muted);
+  border-color: var(--accent);
 }
 
 .btn-icon {
@@ -346,21 +392,21 @@ h1, h2 {
 
 .submit-btn {
   flex: 1;
-  background: var(--text-primary);
+  background: var(--accent);
   border: none;
-  color: var(--bg-primary);
+  color: #ffffff;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   font-family: var(--font-sans);
   transition: all var(--transition-fast);
   min-height: 44px;
 }
 
 .submit-btn:hover {
-  background: #333333;
+  filter: brightness(1.1);
 }
 
 .cancel-btn {
@@ -1110,7 +1156,7 @@ h1, h2 {
 }
 
 .submit-btn.success {
-  background: #333333;
+  background: var(--text-primary);
 }
 
 /* Status History */
@@ -1174,23 +1220,23 @@ h1, h2 {
 }
 
 .level-badge.new {
-  background: var(--bg-secondary);
-  color: var(--text-muted);
+  background: var(--mastery-new-bg);
+  color: var(--mastery-new-text);
 }
 
 .level-badge.learning {
-  background: #e0e0e0;
-  color: #666666;
+  background: var(--mastery-learning-bg);
+  color: var(--mastery-learning-text);
 }
 
 .level-badge.reviewing {
-  background: #d0d0d0;
-  color: #444444;
+  background: var(--mastery-reviewing-bg);
+  color: var(--mastery-reviewing-text);
 }
 
 .level-badge.mastered {
-  background: var(--text-primary);
-  color: var(--bg-primary);
+  background: var(--mastery-mastered-bg);
+  color: var(--mastery-mastered-text);
 }
 
 .history-arrow {
@@ -1298,23 +1344,23 @@ h1, h2 {
 }
 
 .mastery-level-badge.new {
-  background: var(--bg-secondary);
-  color: var(--text-muted);
+  background: var(--mastery-new-bg);
+  color: var(--mastery-new-text);
 }
 
 .mastery-level-badge.learning {
-  background: #e0e0e0;
-  color: #666666;
+  background: var(--mastery-learning-bg);
+  color: var(--mastery-learning-text);
 }
 
 .mastery-level-badge.reviewing {
-  background: #d0d0d0;
-  color: #444444;
+  background: var(--mastery-reviewing-bg);
+  color: var(--mastery-reviewing-text);
 }
 
 .mastery-level-badge.mastered {
-  background: var(--text-primary);
-  color: var(--bg-primary);
+  background: var(--mastery-mastered-bg);
+  color: var(--mastery-mastered-text);
 }
 
 .mastery-level-desc {
@@ -1387,23 +1433,23 @@ h1, h2 {
 }
 
 .mini-badge.new {
-  background: var(--bg-secondary);
-  color: var(--text-muted);
+  background: var(--mastery-new-bg);
+  color: var(--mastery-new-text);
 }
 
 .mini-badge.learning {
-  background: #e0e0e0;
-  color: #666666;
+  background: var(--mastery-learning-bg);
+  color: var(--mastery-learning-text);
 }
 
 .mini-badge.reviewing {
-  background: #d0d0d0;
-  color: #444444;
+  background: var(--mastery-reviewing-bg);
+  color: var(--mastery-reviewing-text);
 }
 
 .mini-badge.mastered {
-  background: var(--text-primary);
-  color: var(--bg-primary);
+  background: var(--mastery-mastered-bg);
+  color: var(--mastery-mastered-text);
 }
 
 /* History direction indicator */
@@ -1413,6 +1459,43 @@ h1, h2 {
   background: var(--bg-hover);
   padding: 2px var(--space-2);
   border-radius: 3px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 100;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* App container with theme toggle space */
+.polish-app {
+  position: relative;
 }
 
 /* Responsive */

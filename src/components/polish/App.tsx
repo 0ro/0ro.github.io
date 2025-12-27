@@ -5,6 +5,7 @@ import { Admin } from "./Admin";
 import { Learn } from "./Learn";
 import { Stats } from "./Stats";
 import { Help } from "./Help";
+import { ThemeToggle } from "./ThemeToggle";
 
 function App() {
   const { currentView } = useStore();
@@ -25,7 +26,12 @@ function App() {
     }
   };
 
-  return <div className="polish-app">{renderView()}</div>;
+  return (
+    <div className="polish-app">
+      <ThemeToggle />
+      {renderView()}
+    </div>
+  );
 }
 
 export default App;

@@ -16,7 +16,7 @@ export function Home() {
   return (
     <div className="home">
       <div className="home-header">
-        <h1 className="home-title">Flashcards</h1>
+        <h1 className="home-title">Memu</h1>
         <p className="home-subtitle">
           Learn Polish with spaced repetition
         </p>
