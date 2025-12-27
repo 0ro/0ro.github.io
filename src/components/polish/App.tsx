@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import { Admin } from "./Admin";
 import { Learn } from "./Learn";
 import { Stats } from "./Stats";
+import { Help } from "./Help";
 
 function App() {
   const { currentView } = useStore();
@@ -16,6 +17,8 @@ function App() {
         return <Learn />;
       case "stats":
         return <Stats />;
+      case "help":
+        return <Help />;
       case "home":
       default:
         return <Home />;

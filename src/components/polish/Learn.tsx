@@ -28,7 +28,6 @@ export function Learn() {
     isAnswerRevealed,
     correctCount,
     incorrectCount,
-    direction,
   } = session;
 
   // Session complete
@@ -40,7 +39,7 @@ export function Learn() {
     return (
       <div className="learn">
         <div className="session-complete">
-          <h1 className="complete-title">🎉 Session Complete!</h1>
+          <h1 className="complete-title">Session Complete</h1>
           <div className="session-stats">
             <div className="stat-circle">
               <span className="stat-percentage">{percentage}%</span>
@@ -49,14 +48,12 @@ export function Learn() {
           </div>
           <div className="session-details">
             <div className="detail-item correct">
-              <span className="detail-icon">👍</span>
+              <span className="detail-icon">Correct</span>
               <span className="detail-value">{correctCount}</span>
-              <span className="detail-label">Correct</span>
             </div>
             <div className="detail-item incorrect">
-              <span className="detail-icon">👎</span>
+              <span className="detail-icon">Incorrect</span>
               <span className="detail-value">{incorrectCount}</span>
-              <span className="detail-label">Incorrect</span>
             </div>
           </div>
           <button className="action-btn primary" onClick={endSession}>
@@ -67,7 +64,8 @@ export function Learn() {
     );
   }
 
-  const currentCard = sessionCards[currentCardIndex];
+  const currentSessionCard = sessionCards[currentCardIndex];
+  const { card: currentCard, direction } = currentSessionCard;
   const progress =
     ((currentCardIndex + 1) / sessionCards.length) * 100;
 
@@ -75,13 +73,15 @@ export function Learn() {
     <div className="learn">
       <div className="learn-header">
         <button className="back-btn" onClick={endSession}>
-          ✕ End Session
+          End Session
         </button>
         <div className="progress-info">
           {currentCardIndex + 1} / {sessionCards.length}
         </div>
         <div className="direction-badge">
-          {direction === "polish-to-russian" ? "🇵🇱 → 🇷🇺" : "🇷🇺 → 🇵🇱"}
+          {direction === "polish-to-russian"
+            ? "PL to RU"
+            : "RU to PL"}
         </div>
       </div>
 
@@ -109,15 +109,15 @@ export function Learn() {
               className="rating-btn incorrect"
               onClick={() => rateCard(thumbsToQuality(false))}
             >
-              <span className="rating-icon">👎</span>
+              <span className="rating-icon">X</span>
               <span className="rating-text">Didn't know</span>
             </button>
             <button
               className="rating-btn correct"
               onClick={() => rateCard(thumbsToQuality(true))}
             >
-              <span className="rating-icon">👍</span>
-              <span className="rating-text">Knew it!</span>
+              <span className="rating-icon">O</span>
+              <span className="rating-text">Knew it</span>
             </button>
           </div>
         </div>

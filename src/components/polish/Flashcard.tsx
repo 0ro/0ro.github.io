@@ -17,9 +17,10 @@ export function Flashcard({
     direction === "polish-to-russian" ? card.polish : card.russian;
   const answer =
     direction === "polish-to-russian" ? card.russian : card.polish;
-  const questionFlag =
-    direction === "polish-to-russian" ? "🇵🇱" : "🇷🇺";
-  const answerFlag = direction === "polish-to-russian" ? "🇷🇺" : "🇵🇱";
+  const questionLabel =
+    direction === "polish-to-russian" ? "Polish" : "Russian";
+  const answerLabel =
+    direction === "polish-to-russian" ? "Russian" : "Polish";
 
   return (
     <div
@@ -29,7 +30,7 @@ export function Flashcard({
       <div className="flashcard-inner">
         {/* Front - Question */}
         <div className="flashcard-front">
-          <div className="card-flag">{questionFlag}</div>
+          <div className="card-flag">{questionLabel}</div>
           <div className="card-word">{question}</div>
           {!isRevealed && (
             <div className="card-hint">Tap to reveal answer</div>
@@ -40,7 +41,7 @@ export function Flashcard({
         {isRevealed && (
           <div className="flashcard-back">
             <div className="card-divider"></div>
-            <div className="card-flag">{answerFlag}</div>
+            <div className="card-flag">{answerLabel}</div>
             <div className="card-word answer">{answer}</div>
             {card.context && (
               <div className="card-context">

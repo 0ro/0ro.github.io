@@ -109,7 +109,7 @@ export function Admin() {
     <div className="admin">
       <div className="admin-header">
         <button className="back-btn" onClick={() => setView("home")}>
-          ← Back
+          Back
         </button>
         <h1 className="admin-title">Manage Words</h1>
       </div>
@@ -117,7 +117,7 @@ export function Admin() {
       <form className="word-form" onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="polish">🇵🇱 Polish</label>
+            <label htmlFor="polish">Polish</label>
             <input
               id="polish"
               type="text"
@@ -128,7 +128,7 @@ export function Admin() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="russian">🇷🇺 Russian</label>
+            <label htmlFor="russian">Russian</label>
             <input
               id="russian"
               type="text"
@@ -168,13 +168,13 @@ export function Admin() {
 
       <div className="admin-tools">
         <button className="tool-btn" onClick={handleExport}>
-          📤 Export
+          Export
         </button>
         <button
           className="tool-btn"
           onClick={() => setShowImport(!showImport)}
         >
-          📥 Import
+          Import
         </button>
       </div>
 
@@ -212,7 +212,7 @@ export function Admin() {
               className={`submit-btn ${copySuccess ? "success" : ""}`}
               onClick={handleCopyExport}
             >
-              {copySuccess ? "✓ Copied!" : "📋 Copy to Clipboard"}
+              {copySuccess ? "Copied" : "Copy to Clipboard"}
             </button>
           </div>
         </div>
@@ -255,21 +255,20 @@ export function Admin() {
             <div key={card.id} className="word-item">
               <div className="word-content">
                 <div className="word-main">
-                  <span className="polish-word">
-                    🇵🇱 {card.polish}
-                  </span>
-                  <span className="word-separator">→</span>
-                  <span className="russian-word">
-                    🇷🇺 {card.russian}
-                  </span>
+                  <span className="polish-word">{card.polish}</span>
+                  <span className="word-separator">—</span>
+                  <span className="russian-word">{card.russian}</span>
                 </div>
                 {card.context && (
                   <div className="word-context">{card.context}</div>
                 )}
                 <div className="word-meta">
-                  {card.repetitions > 0 && (
+                  {(card.polishToRussian.repetitions > 0 ||
+                    card.russianToPolish.repetitions > 0) && (
                     <span className="word-reps">
-                      {card.repetitions} reviews
+                      {card.polishToRussian.repetitions +
+                        card.russianToPolish.repetitions}{" "}
+                      reviews
                     </span>
                   )}
                 </div>
@@ -280,14 +279,14 @@ export function Admin() {
                   onClick={() => handleEdit(card)}
                   title="Edit"
                 >
-                  ✏️
+                  Edit
                 </button>
                 <button
                   className="delete-btn"
                   onClick={() => handleDelete(card.id)}
                   title="Delete"
                 >
-                  🗑️
+                  Del
                 </button>
               </div>
             </div>

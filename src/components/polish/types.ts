@@ -12,21 +12,26 @@ export interface StatusChange {
   toLevel: MasteryLevel;
 }
 
-// Flashcard data model
+// Direction-specific progress tracking
+export interface DirectionProgress {
+  easeFactor: number; // Default 2.5, minimum 1.3
+  interval: number; // Days until next review
+  repetitions: number; // Successful repetitions count
+  nextReviewDate: number; // Timestamp for next review
+  lastReviewDate?: number; // Last review timestamp
+  statusHistory?: StatusChange[];
+}
+
+// Flashcard data model with bidirectional progress
 export interface Flashcard {
   id: string;
   polish: string; // Polish word
   russian: string; // Russian translation
   context?: string; // Additional context/examples
   createdAt: number;
-  // SM-2 algorithm fields
-  easeFactor: number; // Default 2.5, minimum 1.3
-  interval: number; // Days until next review
-  repetitions: number; // Successful repetitions count
-  nextReviewDate: number; // Timestamp for next review
-  lastReviewDate?: number; // Last review timestamp
-  // Status history
-  statusHistory?: StatusChange[];
+  // Separate progress for each direction
+  polishToRussian: DirectionProgress;
+  russianToPolish: DirectionProgress;
 }
 
 // SM-2 quality ratings
@@ -36,14 +41,19 @@ export type Quality = 0 | 1 | 2 | 3 | 4 | 5;
 export type Direction = "polish-to-russian" | "russian-to-polish";
 
 // App views
-export type View = "home" | "admin" | "learn" | "stats";
+export type View = "home" | "admin" | "learn" | "stats" | "help";
+
+// Session card with assigned direction
+export interface SessionCard {
+  card: Flashcard;
+  direction: Direction;
+}
 
 // Learning session state
 export interface LearningSession {
-  direction: Direction;
   currentCardIndex: number;
   isAnswerRevealed: boolean;
-  sessionCards: Flashcard[];
+  sessionCards: SessionCard[];
   correctCount: number;
   incorrectCount: number;
 }
@@ -75,7 +85,7 @@ export interface PolishStore {
   deleteFlashcard: (id: string) => void;
 
   // Learning session
-  startSession: (direction: Direction) => void;
+  startSession: () => void;
   endSession: () => void;
   revealAnswer: () => void;
   rateCard: (quality: Quality) => void;

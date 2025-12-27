@@ -7,16 +7,77 @@ import type {
   View,
   Direction,
   Quality,
+  SessionCard,
+  DirectionProgress,
 } from "./types";
 import {
   createFlashcard,
   calculateSM2,
   sortCardsForLearning,
-  getDueCards,
+  getDueDirections,
   getMasteryLevel,
+  getDirectionProgress,
+  createDefaultProgress,
 } from "./sm2";
 
 const MAX_SESSION_CARDS = 20; // Max cards per learning session
+
+/**
+ * Randomly pick a direction, preferring due directions
+ */
+function pickDirection(card: Flashcard): Direction {
+  const dueDirections = getDueDirections(card);
+
+  if (dueDirections.length === 1) {
+    // Only one direction is due, use it
+    return dueDirections[0];
+  } else if (dueDirections.length === 2) {
+    // Both directions due, pick randomly
+    return Math.random() < 0.5
+      ? "polish-to-russian"
+      : "russian-to-polish";
+  } else {
+    // Neither is due, pick randomly (for new cards or future reviews)
+    return Math.random() < 0.5
+      ? "polish-to-russian"
+      : "russian-to-polish";
+  }
+}
+
+/**
+ * Migrate old flashcard format to new bidirectional format
+ */
+function migrateFlashcard(card: any): Flashcard {
+  // Check if card has old format (flat SM-2 fields without direction objects)
+  if (card.easeFactor !== undefined && !card.polishToRussian) {
+    const progress: DirectionProgress = {
+      easeFactor: card.easeFactor ?? 2.5,
+      interval: card.interval ?? 0,
+      repetitions: card.repetitions ?? 0,
+      nextReviewDate: card.nextReviewDate ?? Date.now(),
+      lastReviewDate: card.lastReviewDate,
+      statusHistory: card.statusHistory,
+    };
+
+    return {
+      id: card.id,
+      polish: card.polish,
+      russian: card.russian,
+      context: card.context,
+      createdAt: card.createdAt,
+      // Copy existing progress to BOTH directions
+      polishToRussian: { ...progress },
+      russianToPolish: { ...progress },
+    };
+  }
+
+  // Card is already in new format or needs minimal fixes
+  return {
+    ...card,
+    polishToRussian: card.polishToRussian ?? createDefaultProgress(),
+    russianToPolish: card.russianToPolish ?? createDefaultProgress(),
+  };
+}
 
 export const useStore = create(
   persist(
@@ -75,25 +136,31 @@ export const useStore = create(
         });
       },
 
-      // Learning session
-      startSession: (direction: Direction) => {
+      // Learning session - now with random direction per card
+      startSession: () => {
         const { flashcards } = get();
 
         if (flashcards.length === 0) return;
 
-        // Get due cards first, then new/future cards
-        const dueCards = getDueCards(flashcards);
+        // Sort cards for learning
         const sortedCards = sortCardsForLearning(flashcards);
 
-        // Take up to MAX_SESSION_CARDS, prioritizing due cards
-        const sessionCards = sortedCards.slice(0, MAX_SESSION_CARDS);
+        // Take up to MAX_SESSION_CARDS
+        const selectedCards = sortedCards.slice(0, MAX_SESSION_CARDS);
 
-        if (sessionCards.length === 0) return;
+        if (selectedCards.length === 0) return;
+
+        // Assign a random direction to each card, preferring due directions
+        const sessionCards: SessionCard[] = selectedCards.map(
+          card => ({
+            card,
+            direction: pickDirection(card),
+          })
+        );
 
         set(state => {
           state.currentView = "learn";
           state.session = {
-            direction,
             currentCardIndex: 0,
             isAnswerRevealed: false,
             sessionCards: sessionCards,
@@ -123,23 +190,40 @@ export const useStore = create(
           if (!state.session) return;
 
           const { currentCardIndex, sessionCards } = state.session;
-          const currentCard = sessionCards[currentCardIndex];
+          const sessionCard = sessionCards[currentCardIndex];
 
-          if (!currentCard) return;
+          if (!sessionCard) return;
 
-          // Update the card with SM-2 algorithm
-          const sm2Result = calculateSM2(currentCard, quality);
+          const { card, direction } = sessionCard;
+
+          // Find the card in the main flashcards array
           const cardIndex = state.flashcards.findIndex(
-            c => c.id === currentCard.id
+            c => c.id === card.id
           );
 
           if (cardIndex !== -1) {
-            const oldCard = state.flashcards[cardIndex];
-            const oldLevel = getMasteryLevel(oldCard.repetitions);
-            const newLevel = getMasteryLevel(sm2Result.repetitions);
+            const flashcard = state.flashcards[cardIndex];
+
+            // Get the current direction progress
+            const currentProgress = getDirectionProgress(
+              flashcard,
+              direction
+            );
+            const oldLevel = getMasteryLevel(
+              currentProgress.repetitions
+            );
+
+            // Calculate new progress for this direction
+            const newProgress = calculateSM2(
+              currentProgress,
+              quality
+            );
+            const newLevel = getMasteryLevel(newProgress.repetitions);
 
             // Track status change if level changed
-            const statusHistory = oldCard.statusHistory || [];
+            const statusHistory = [
+              ...(currentProgress.statusHistory || []),
+            ];
             if (oldLevel !== newLevel) {
               statusHistory.push({
                 timestamp: Date.now(),
@@ -148,12 +232,18 @@ export const useStore = create(
               });
             }
 
-            state.flashcards[cardIndex] = {
-              ...oldCard,
-              ...sm2Result,
-              lastReviewDate: Date.now(),
-              statusHistory,
-            };
+            // Update the specific direction's progress
+            if (direction === "polish-to-russian") {
+              state.flashcards[cardIndex].polishToRussian = {
+                ...newProgress,
+                statusHistory,
+              };
+            } else {
+              state.flashcards[cardIndex].russianToPolish = {
+                ...newProgress,
+                statusHistory,
+              };
+            }
           }
 
           // Update session stats
@@ -178,7 +268,7 @@ export const useStore = create(
       // Import/Export
       exportData: () => {
         const { flashcards } = get();
-        return JSON.stringify({ flashcards, version: 1 }, null, 2);
+        return JSON.stringify({ flashcards, version: 2 }, null, 2);
       },
 
       importData: (json: string) => {
@@ -190,9 +280,9 @@ export const useStore = create(
               const existingIds = new Set(
                 state.flashcards.map(c => c.id)
               );
-              const newCards = data.flashcards.filter(
-                (c: Flashcard) => !existingIds.has(c.id)
-              );
+              const newCards = data.flashcards
+                .filter((c: Flashcard) => !existingIds.has(c.id))
+                .map(migrateFlashcard);
               state.flashcards.push(...newCards);
             });
             return true;
@@ -205,7 +295,17 @@ export const useStore = create(
     })),
     {
       name: "polish-flashcards",
-      version: 1,
+      version: 2,
+      migrate: (persistedState: any, version: number) => {
+        if (version === 1 || version === 0) {
+          // Migrate from v1 (single direction) to v2 (bidirectional)
+          const migratedFlashcards = (
+            persistedState.flashcards || []
+          ).map(migrateFlashcard);
+          return { flashcards: migratedFlashcards };
+        }
+        return persistedState;
+      },
       partialize: state => ({
         flashcards: state.flashcards,
       }),
